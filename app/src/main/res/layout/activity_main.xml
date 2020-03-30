@@ -15,4 +15,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="dispatchTakePictureIntent"
+        android:text="Prendre une photo">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

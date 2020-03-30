@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
+ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\cccfd3c2b80d5fad1124ffebe28c3f3b\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\a518426e46579177e15d07df26dcbd4d\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\65c09879886c04dd03c37ecd65c89ae1\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
@@ -48,20 +48,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\romai\.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\e5f4ab83b7154d8dd7689c213d4008f9\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\3ad98f043f0e278e1b4f445317842885\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\romai\.gradle\caches\transforms-2\files-2.1\c7e64f6181ef9b2b223b47bd6635a3b3\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
 	package
 		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:3:5-31
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
-		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
-		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-21:12
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:1-25:12
 		INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:2:11-69
@@ -131,6 +131,20 @@ category#android.intent.category.LAUNCHER
 ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:16:17-77
 	android:name
 		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:16:27-74
+uses-feature#android.hardware.camera
+ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:20:5-21:35
+	android:required
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:21:9-32
+	android:name
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:20:19-57
+uses-permission#android.permission.CAMERA
+ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:22:5-65
+	android:name
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:22:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml:23:22-78
 uses-sdk
 INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Bureau\Epsi_B3\MSPR\MSPR_Android\app\src\main\AndroidManifest.xml
