@@ -7,6 +7,9 @@ node{
 		stage('deuxiemeEtape'){
 			sh "echo 'hello wordl'"
 		}
+		stage('troisiemeEtape'){
+			sh "echo 'hello wordl'"
+		}
 	}
 	finally{
 		cleanWs()
