@@ -8,7 +8,7 @@ node{
 			sh "echo 'hello wordl'"
 		}
 		stage('troisiemeEtape'){
-			sh "echo 'hello wordl'"
+			sh "echo 'hello world'"
 		}
 	}
 	finally{
