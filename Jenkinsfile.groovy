@@ -1,3 +1,10 @@
+properties([
+	pipelineTriggers([
+		[$class: 'GitHubPushTrigger'], 
+		pollSCM('H/15 * * * *')
+	])
+])
+
 node{
 	cleanWs()
 	try{
