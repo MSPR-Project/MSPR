@@ -1,36 +1,26 @@
-package Gui;
+package elPackage;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import elPackage.Firebase.Common;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
-import org.opencv.face.EigenFaceRecognizer;
-import org.opencv.face.FaceRecognizer;
-import org.opencv.face.FisherFaceRecognizer;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static javax.imageio.ImageIO.read;
+import static elPackage.Firebase.Common.initFireBase;
 
 public class Camera extends JFrame {
 
@@ -105,33 +95,37 @@ public class Camera extends JFrame {
     MatOfByte mem = new MatOfByte();
 
 
-    public Camera() {
-                webSource =new VideoCapture(0);
-                webSource.open(0);
-                myThread = new DaemonThread();
-                Thread t = new Thread(myThread);
-                t.setDaemon(true);
-                myThread.runnable = true;
-                t.start();
-                buttonCapture.setEnabled(true);  // capture button
+    public Camera() throws IOException {
 
-            buttonCapture.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+        initFireBase();
 
-                myThread.runnable = false;
-                buttonCapture.setEnabled(false);
-                CameraPanel.setVisible(false);
-                CameraPanel.setVisible(false);
-                webSource.release();
-                formMain();
+        webSource =new VideoCapture(0);
+        webSource.open(0);
+        myThread = new DaemonThread();
+        Thread t = new Thread(myThread);
+        t.setDaemon(true);
+        myThread.runnable = true;
+        t.start();
+        buttonCapture.setEnabled(true);  // capture button
+
+        buttonCapture.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            super.mouseClicked(e);
+
+            myThread.runnable = false;
+            buttonCapture.setEnabled(false);
+            CameraPanel.setVisible(false);
+            CameraPanel.setVisible(false);
+            webSource.release();
+            formMain();
 
             }
         });
     }
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         setupFrame();
     }
 
@@ -155,10 +149,26 @@ public class Camera extends JFrame {
         panelForm.add(cb12);
         panelForm.add(cb13);
         panelForm.add(cb14);
-
+        firstPush();
     }
 
-    public static void setupFrame(){
+    public void firstPush(){
+        //table ==>
+        //Column ==> myRef
+        //Row ==> Value
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello world test", new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+            }
+        });
+    }
+
+    public static void setupFrame() throws IOException {
 
         frame.setSize(1000,700);
         frame.setContentPane(new Camera().MainPanelAuth);
