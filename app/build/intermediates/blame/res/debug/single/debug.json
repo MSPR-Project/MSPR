@@ -58,5 +58,9 @@
     {
         "merged": "D:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "D:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_paths.xml.flat",
+        "source": "D:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\src\\main\\res\\xml\\file_paths.xml"
     }
 ]
