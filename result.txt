@@ -2,8 +2,8 @@
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig UP-TO-DATE
-> Task :app:javaPreCompileDebug UP-TO-DATE
 > Task :app:compileDebugRenderscript NO-SOURCE
+> Task :app:javaPreCompileDebug UP-TO-DATE
 > Task :app:mainApkListPersistenceDebug UP-TO-DATE
 > Task :app:generateDebugResValues UP-TO-DATE
 > Task :app:generateDebugResources UP-TO-DATE
@@ -73,6 +73,7 @@ See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:comman
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 BUILD SUCCESSFUL in 7s
 28 actionable tasks: 8 executed, 20 up-to-date
 =======
@@ -81,5 +82,8 @@ BUILD SUCCESSFUL in 4s
 >>>>>>> devAppliMobile
 =======
 BUILD SUCCESSFUL in 2s
+=======
+BUILD SUCCESSFUL in 3s
+>>>>>>> devAppliMobile
 28 actionable tasks: 28 up-to-date
 >>>>>>> devAppliMobile
