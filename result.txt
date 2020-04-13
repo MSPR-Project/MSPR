@@ -74,6 +74,7 @@ See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:comman
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 BUILD SUCCESSFUL in 7s
 28 actionable tasks: 8 executed, 20 up-to-date
 =======
@@ -84,6 +85,9 @@ BUILD SUCCESSFUL in 4s
 BUILD SUCCESSFUL in 2s
 =======
 BUILD SUCCESSFUL in 3s
+>>>>>>> devAppliMobile
+=======
+BUILD SUCCESSFUL in 2s
 >>>>>>> devAppliMobile
 28 actionable tasks: 28 up-to-date
 >>>>>>> devAppliMobile
