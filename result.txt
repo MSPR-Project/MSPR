@@ -2,8 +2,8 @@
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig UP-TO-DATE
-> Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:mainApkListPersistenceDebug UP-TO-DATE
 > Task :app:generateDebugResValues UP-TO-DATE
 > Task :app:generateDebugResources UP-TO-DATE
@@ -15,8 +15,12 @@
 > Task :app:processDebugJavaRes NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes NO-SOURCE
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 > Task :app:testDebugUnitTest
+>>>>>>> devAppliMobile
+=======
+> Task :app:testDebugUnitTest UP-TO-DATE
 >>>>>>> devAppliMobile
 > Task :app:preReleaseBuild UP-TO-DATE
 > Task :app:compileReleaseAidl NO-SOURCE
@@ -41,6 +45,7 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:processReleaseJavaRes NO-SOURCE
 > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
 <<<<<<< HEAD
+<<<<<<< HEAD
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
 > Task :app:compileReleaseJavaWithJavac UP-TO-DATE
@@ -57,15 +62,24 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:testReleaseUnitTest
 >>>>>>> devAppliMobile
 > Task :app:test
+=======
+> Task :app:testReleaseUnitTest UP-TO-DATE
+> Task :app:test UP-TO-DATE
+>>>>>>> devAppliMobile
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 BUILD SUCCESSFUL in 7s
 28 actionable tasks: 8 executed, 20 up-to-date
 =======
 BUILD SUCCESSFUL in 4s
 28 actionable tasks: 2 executed, 26 up-to-date
+>>>>>>> devAppliMobile
+=======
+BUILD SUCCESSFUL in 2s
+28 actionable tasks: 28 up-to-date
 >>>>>>> devAppliMobile
