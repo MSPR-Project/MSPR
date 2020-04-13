@@ -1,9 +1,9 @@
 package elPackage;
 
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import autovalue.shaded.com.squareup.javapoet$.$TypeVariableName;
+import com.google.firebase.database.*;
 import elPackage.Firebase.Common;
+import elPackage.Firebase.Item;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -25,6 +25,7 @@ import static elPackage.Firebase.Common.initFireBase;
 public class Camera extends JFrame {
 
     static JFrame frame = new JFrame("GoSecuri");
+    private DatabaseReference mDatabase;
 
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
     JButton startStream = new JButton("Start");
@@ -149,23 +150,75 @@ public class Camera extends JFrame {
         panelForm.add(cb12);
         panelForm.add(cb13);
         panelForm.add(cb14);
-        firstPush();
+        cb1.setEnabled(false);
+        //firstPush();
+        firstRead();
+        //writeNewItem("mousqueton 43", "True", "Null");
     }
 
     public void firstPush(){
         //table ==>
         //Column ==> myRef
         //Row ==> Value
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("message");
 
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-        myRef.setValue("Hello world test", new DatabaseReference.CompletionListener() {
+        mDatabase.setValue("Hello world test", new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 
             }
         });
+    }
+
+    public void writeNewItem(String newId, String newAvailable, String newIdOwner){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Item");
+
+        Item item = new Item();
+        item.setId(newId);
+        item.setAvailable(newAvailable);
+        item.setIdOwner(newIdOwner);
+
+        mDatabase.child(newId).setValue(item, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                System.out.println("Good bg");
+            }
+        });
+
+    }
+
+    public void firstRead(){
+        //table ==>
+        //Column ==> myRef
+        //Row ==> Value
+        //
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Item");
+
+        // Read from the database
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                System.out.println(value);
+                if(value.equals("toto")){
+                    cb1.setEnabled(true);
+                    System.out.println("value");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            System.out.println("Error");
+            }
+        });
+        System.out.println("Error Bis");
+    }
+
+    public void readData(){
+
     }
 
     public static void setupFrame() throws IOException {
