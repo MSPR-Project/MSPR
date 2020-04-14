@@ -1,12 +1,14 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
-> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:generateDebugBuildConfig
 > Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:javaPreCompileDebug UP-TO-DATE
 > Task :app:mainApkListPersistenceDebug UP-TO-DATE
 > Task :app:generateDebugResValues UP-TO-DATE
 > Task :app:generateDebugResources UP-TO-DATE
+<<<<<<< HEAD
 > Task :app:processDebugGoogleServices UP-TO-DATE
 > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
 > Task :app:extractDeepLinksDebug UP-TO-DATE
@@ -21,6 +23,22 @@
 >>>>>>> devAppliMobile
 =======
 > Task :app:testDebugUnitTest UP-TO-DATE
+>>>>>>> devAppliMobile
+=======
+
+> Task :app:processDebugGoogleServices
+Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
+
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+
+> Task :app:processDebugManifest
+D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
+	activity#com.google.firebase.auth.internal.FederatedSignInActivity@android:launchMode was tagged at AndroidManifest.xml:24 to replace other declarations but no other declaration present
+
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes NO-SOURCE
 >>>>>>> devAppliMobile
 > Task :app:preReleaseBuild UP-TO-DATE
 > Task :app:compileReleaseAidl NO-SOURCE
@@ -46,11 +64,15 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> devAppliMobile
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
 > Task :app:compileReleaseJavaWithJavac UP-TO-DATE
 > Task :app:javaPreCompileReleaseUnitTest UP-TO-DATE
 > Task :app:compileReleaseUnitTestJavaWithJavac UP-TO-DATE
+<<<<<<< HEAD
 > Task :app:testReleaseUnitTest
 > Task :app:mergeDebugResources
 > Task :app:processDebugResources UP-TO-DATE
@@ -63,7 +85,15 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 >>>>>>> devAppliMobile
 > Task :app:test
 =======
+=======
+>>>>>>> devAppliMobile
 > Task :app:testReleaseUnitTest UP-TO-DATE
+> Task :app:mergeDebugResources
+> Task :app:processDebugResources
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac UP-TO-DATE
+> Task :app:testDebugUnitTest UP-TO-DATE
 > Task :app:test UP-TO-DATE
 >>>>>>> devAppliMobile
 
@@ -71,6 +101,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -90,4 +121,8 @@ BUILD SUCCESSFUL in 3s
 BUILD SUCCESSFUL in 2s
 >>>>>>> devAppliMobile
 28 actionable tasks: 28 up-to-date
+>>>>>>> devAppliMobile
+=======
+BUILD SUCCESSFUL in 26s
+28 actionable tasks: 10 executed, 18 up-to-date
 >>>>>>> devAppliMobile
