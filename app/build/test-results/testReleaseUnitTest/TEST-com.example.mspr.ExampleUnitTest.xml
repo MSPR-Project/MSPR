@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="com.example.mspr.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-13T11:18:46" hostname="DESKTOP-B8STKG0" time="0.001">
+=======
+<testsuite name="com.example.mspr.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-15T14:03:55" hostname="DESKTOP-B8STKG0" time="0.001">
+>>>>>>> devAppliMobile
   <properties/>
   <testcase name="test_REQUEST_IMAGE_CAPTURE" classname="com.example.mspr.ExampleUnitTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
