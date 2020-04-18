@@ -29,7 +29,9 @@
         </provider>
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="ocr" />
+            android:value="ocr"
+            />
+
     </application>
 
     <uses-feature android:name="android.hardware.camera"
