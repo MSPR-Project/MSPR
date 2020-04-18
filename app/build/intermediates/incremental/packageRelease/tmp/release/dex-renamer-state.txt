@@ -1,4 +1,4 @@
-#Sat Apr 18 17:53:53 CEST 2020
+#Sat Apr 18 22:46:26 CEST 2020
 base.0=D\:\\MSPR\\CI\\MSPR\\app\\build\\intermediates\\dex\\release\\out\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

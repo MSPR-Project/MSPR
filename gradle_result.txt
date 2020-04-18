@@ -1,18 +1,19 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig
 > Task :app:compileDebugRenderscript NO-SOURCE
-> Task :app:javaPreCompileDebug UP-TO-DATE
-> Task :app:mainApkListPersistenceDebug UP-TO-DATE
+> Task :app:javaPreCompileDebug
+> Task :app:mainApkListPersistenceDebug
 > Task :app:generateDebugResValues
 > Task :app:generateDebugResources
 
 > Task :app:processDebugGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
-> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
-> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
 
 > Task :app:processDebugManifest
 D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
@@ -39,37 +40,37 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:compileReleaseAidl NO-SOURCE
 > Task :app:compileReleaseRenderscript NO-SOURCE
 > Task :app:generateReleaseBuildConfig
-> Task :app:javaPreCompileRelease UP-TO-DATE
-> Task :app:mainApkListPersistenceRelease UP-TO-DATE
+> Task :app:mainApkListPersistenceRelease
 > Task :app:generateReleaseResValues
 > Task :app:generateReleaseResources
 
 > Task :app:processReleaseGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
-> Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
-> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:mergeProjectDexDebug
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
 
 > Task :app:processReleaseManifest
 D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 	activity#com.google.firebase.auth.internal.FederatedSignInActivity@android:launchMode was tagged at AndroidManifest.xml:24 to replace other declarations but no other declaration present
 
+> Task :app:javaPreCompileRelease
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
 
 > Task :app:compileReleaseJavaWithJavac
 
 > Task :app:compileReleaseSources
-> Task :app:mergeProjectDexDebug
-> Task :app:mergeExtDexDebug
 > Task :app:mergeDebugNativeLibs
 > Task :app:stripDebugDebugSymbols
-> Task :app:packageDebug
-> Task :app:assembleDebug
-> Task :app:prepareLintJar
+> Task :app:prepareLintJar UP-TO-DATE
 > Task :app:checkReleaseDuplicateClasses
 > Task :app:lintVitalRelease SKIPPED
 > Task :app:dexBuilderRelease
+> Task :app:mergeExtDexDebug
+> Task :app:packageDebug
+> Task :app:assembleDebug
 > Task :app:mergeReleaseShaders
 > Task :app:compileReleaseShaders
 > Task :app:generateReleaseAssets
@@ -78,25 +79,25 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:mergeReleaseJniLibFolders
 
 > Task :app:lint
-Ran lint on variant debug: 5 issues found
-Ran lint on variant release: 5 issues found
+Ran lint on variant debug: 4 issues found
+Ran lint on variant release: 4 issues found
 Wrote HTML report to file:///D:/MSPR/CI/MSPR/app/build/reports/lint-results.html
 Wrote XML report to file:///D:/MSPR/CI/MSPR/app/build/reports/lint-results.xml
 
+> Task :app:mergeReleaseJavaResource
 > Task :app:mergeReleaseNativeLibs
 > Task :app:stripReleaseDebugSymbols
-> Task :app:mergeReleaseJavaResource
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:processDebugUnitTestJavaRes NO-SOURCE
 > Task :app:preReleaseUnitTestBuild UP-TO-DATE
 > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
-> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
 > Task :app:compileDebugUnitTestJavaWithJavac
-> Task :app:testDebugUnitTest UP-TO-DATE
-> Task :app:javaPreCompileReleaseUnitTest UP-TO-DATE
+> Task :app:testDebugUnitTest
+> Task :app:javaPreCompileReleaseUnitTest
 > Task :app:compileReleaseUnitTestJavaWithJavac
-> Task :app:testReleaseUnitTest UP-TO-DATE
-> Task :app:test UP-TO-DATE
+> Task :app:testReleaseUnitTest
+> Task :app:test
 > Task :app:check
 > Task :app:mergeExtDexRelease
 > Task :app:mergeDexRelease
@@ -109,5 +110,5 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 1m 3s
-56 actionable tasks: 44 executed, 12 up-to-date
+BUILD SUCCESSFUL in 1m 2s
+56 actionable tasks: 55 executed, 1 up-to-date

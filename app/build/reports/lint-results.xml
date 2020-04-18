@@ -34,22 +34,6 @@
     </issue>
 
     <issue
-        id="GradleDependency"
-        severity="Warning"
-        message="A newer version of androidx.appcompat:appcompat than 1.0.2 is available: 1.1.0"
-        category="Correctness"
-        priority="4"
-        summary="Obsolete Gradle Dependency"
-        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="    implementation &apos;androidx.appcompat:appcompat:1.0.2&apos;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\MSPR\CI\MSPR\app\build.gradle"
-            line="31"
-            column="5"/>
-    </issue>
-
-    <issue
         id="AllowBackup"
         severity="Warning"
         message="On SDK version 23 and up, your app data will be automatically backed up, and restored on app install. Your GCM regid will not work across restores, so you must ensure that it is excluded from the back-up set. Use the attribute `android:fullBackupContent` to specify an `@xml` resource which configures which files to backup. More info: https://developer.android.com/training/backup/autosyncapi.html"
