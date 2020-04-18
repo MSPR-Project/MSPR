@@ -47,7 +47,7 @@
 27        android:allowBackup="true"
 27-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:7:9-35
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.0.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\8c7c740d3ba2940df761cbde4615b6ce\core-1.0.1\AndroidManifest.xml:22:18-86
+28-->[androidx.core:core:1.1.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\5a8ffccd14c8ee4f7e14e399f1aaa105\core-1.1.0\AndroidManifest.xml:24:18-86
 29        android:debuggable="true"
 30        android:extractNativeLibs="false"
 31        android:icon="@mipmap/ic_launcher"
@@ -79,8 +79,8 @@
 44-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:21:9-29:20
 45            android:name="androidx.core.content.FileProvider"
 45-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:22:13-62
-46            android:authorities="com.example.android.fileprovider"
-46-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:23:13-67
+46            android:authorities="com.example.mspr.fileprovider"
+46-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:23:13-64
 47            android:exported="false"
 47-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:13-37
 48            android:grantUriPermissions="true" >
