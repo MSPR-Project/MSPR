@@ -11,8 +11,6 @@
 [INFO] --------------------------< MsprProject:Mspr >--------------------------
 [INFO] Building Mspr 1.0-SNAPSHOT
 [INFO] --------------------------------[ jar ]---------------------------------
-Downloading from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml
-Progress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml (2.5 kB at 3.1 kB/s)
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Mspr ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
@@ -32,6 +30,7 @@ Progress (1): 2.5 kB                    Downloaded from central: https://repo.
 [INFO] No tests to run.
 [INFO] 
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ Mspr ---
+[INFO] Building jar: D:\MSPR\CI\MSPR\target\Mspr-1.0-SNAPSHOT.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.4:install (default-install) @ Mspr ---
 [INFO] Installing D:\MSPR\CI\MSPR\target\Mspr-1.0-SNAPSHOT.jar to C:\Users\user\.m2\repository\MsprProject\Mspr\1.0-SNAPSHOT\Mspr-1.0-SNAPSHOT.jar
@@ -77,6 +76,6 @@ Progress (1): 2.5 kB                    Downloaded from central: https://repo.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  4.660 s
-[INFO] Finished at: 2020-04-17T21:17:55+02:00
+[INFO] Total time:  1.866 s
+[INFO] Finished at: 2020-04-18T12:58:16+02:00
 [INFO] ------------------------------------------------------------------------
