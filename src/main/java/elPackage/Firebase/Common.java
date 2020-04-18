@@ -16,7 +16,7 @@ public class Common extends JFrame {
 
     public static JFrame te = new JFrame();
 
-    public static void initFireBase() {
+    public static Boolean initFireBase() {
         FileInputStream refreshToken = null;
         try{
             refreshToken = new FileInputStream("/Users/fabiensisca/Documents/Cours/Mspr/src/main/java/elPackage/Firebase/mspr-gosecuri-firebase-adminsdk-77ld0-4c1bf60a2b.json");
@@ -41,6 +41,7 @@ public class Common extends JFrame {
                 Logger.getLogger(Common.class.getName()).log(Level.SEVERE, null, e);
             }
         }
+        return true;
     }
 
     public Common(){

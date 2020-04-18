@@ -214,7 +214,8 @@ public class Camera extends JFrame {
 
     }
 
-    public void firstRead(){
+    public Boolean firstRead(){
+    	
         //table ==>
         //Column ==> myRef
         //Row ==> Value
@@ -241,6 +242,7 @@ public class Camera extends JFrame {
             }
         });
         System.out.println("Error");
+        return true;
     }
 
     public void selectAnItem(String elItem){
