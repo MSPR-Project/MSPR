@@ -49,6 +49,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     //FirebaseVisionImage image;
+
+    List<FirebaseVisionPoint> pointsFace1 = new ArrayList<>();
+    List<FirebaseVisionPoint> pointsFace2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +78,20 @@ public class MainActivity extends AppCompatActivity {
         //creates a storage reference
         storageReference = storage.getReference();
 
+        String fakeci1 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci.png?alt=media&token=796668b2-f334-4e39-a0f6-f5ee3e1140cb";
+        String fakeci2 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci2.jpg?alt=media&token=11241a73-5286-4261-9a1c-b197aff63cb0";
+        String fakeci3 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci3.jpg?alt=media&token=af39fd24-afb3-4d67-a354-20d52b80b69a";
+        String imageci = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Fimageci.jpg?alt=media&token=af315935-b40a-49e3-914f-6ee22da17585";
+
 
         //runTextRecognition();
-        runFaceDetection();
+        runFaceDetection(fakeci1);
+        runFaceDetection(imageci);
+
 
     }
 
+    //photo carte identité
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     public void dispatchTakePictureIntent(View view) {
@@ -94,28 +106,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
             Bitmap photo = (Bitmap) data.getExtras().get("data");
 
+            //runTextRecognition(photo);
+
+
+            //stockage photo
             Uri photoUri = getImageUri(getApplicationContext(), photo);
             StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
-
             ref.putFile(photoUri);
-
-            //image = FirebaseVisionImage.fromBitmap(photo);
-           /* Uri uri = storageReference.child("images/fd3c195e-fe3c-451f-b050-755844fc6807.jpeg").getDownloadUrl();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                image = FirebaseVisionImage.fromBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-
-
         }
     }
 
-
-
+    // détection texte
     private void runTextRecognition() {
         String fakeci1 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci.png?alt=media&token=796668b2-f334-4e39-a0f6-f5ee3e1140cb";
         String fakeci2 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci2.jpg?alt=media&token=11241a73-5286-4261-9a1c-b197aff63cb0";
@@ -160,54 +164,47 @@ public class MainActivity extends AppCompatActivity {
             List<FirebaseVisionText.Line> lines = blocks.get(i).getLines();
             //System.out.println(i);
             //System.out.println(blocks.get(i).getText());
-            if(blocks.get(i).getText().endsWith("No")){
-                try{
+            if (blocks.get(i).getText().endsWith("No")) {
+                try {
                     int valeur = i;
                     valeur++;
                     //String a = blocks.get(valeur).getText();
                     numeroCI = blocks.get(valeur).getText();
                     //System.out.println(numeroCI);
 
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return;
                 }
-            }
-            else if(blocks.get(i).getText().contains("IDENTITÉ")){
+            } else if (blocks.get(i).getText().contains("IDENTITÉ")) {
                 try {
                     String[] splits = (blocks.get(i).getText()).split(" ");
                     int c = (splits.length) - 1;
                     numeroCI = splits[c];
                     //System.out.println(numeroCI);
 
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return;
                 }
-            }
-            else if(blocks.get(i).getText().contains("Prénom")){
+            } else if (blocks.get(i).getText().contains("Prénom")) {
                 try {
                     String[] splits = (blocks.get(i).getText()).split(" ");
                     int c = (splits.length) - 1;
                     prenomCI = splits[c];
                     //System.out.println(prenomCI);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return;
                 }
 
-            }
-            else if(blocks.get(i).getText().contains("Nom") || blocks.get(i).getText().contains("Nom:")){
+            } else if (blocks.get(i).getText().contains("Nom") || blocks.get(i).getText().contains("Nom:")) {
                 try {
                     String[] splits = (blocks.get(i).getText()).split(" ");
                     int c = (splits.length) - 1;
                     nomCI = splits[c];
                     //System.out.println(nomCI);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return;
                 }
@@ -217,27 +214,24 @@ public class MainActivity extends AppCompatActivity {
                 List<FirebaseVisionText.Element> elements = lines.get(j).getElements();
                 //System.out.println(j);
                 //System.out.println(lines.get(j).getText());
-                if(lines.get(j).getText().contains("Prénom")){
+                if (lines.get(j).getText().contains("Prénom")) {
                     try {
                         String[] splits = (lines.get(j).getText()).split(" ");
                         int c = (splits.length) - 1;
                         prenomCI = splits[c];
                         //System.out.println(prenomCI);
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         return;
                     }
 
-                }
-                else if(lines.get(j).getText().contains("Nom") || lines.get(j).getText().contains("Nom:")){
+                } else if (lines.get(j).getText().contains("Nom") || lines.get(j).getText().contains("Nom:")) {
                     try {
                         String[] splits = (lines.get(j).getText()).split(" ");
                         int c = (splits.length) - 1;
                         nomCI = splits[c];
                         //System.out.println(nomCI);
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         return;
                     }
@@ -247,31 +241,27 @@ public class MainActivity extends AppCompatActivity {
                 for (int k = 0; k < elements.size(); k++) {
                     System.out.println(k);
                     System.out.println(elements.get(k).getText());
-                    if(elements.get(k).getText().contains("Prénom")){
+                    if (elements.get(k).getText().contains("Prénom")) {
                         try {
                             int valeur = k;
                             valeur++;
                             prenomCI = elements.get(valeur).getText();
                             //System.out.println(prenomCI);
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                             return;
                         }
-                    }
-                    else if(elements.get(k).getText().contains("Nom")){
+                    } else if (elements.get(k).getText().contains("Nom")) {
                         try {
                             int valeur = k;
                             valeur++;
                             nomCI = elements.get(valeur).getText();
                             //System.out.println(nomCI);
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                             return;
                         }
-                    }
-                    else if(elements.get(k).getText().endsWith("N")){
+                    } else if (elements.get(k).getText().endsWith("N")) {
                        /* try {
                             int valeur = k;
                             if(valeur<=elements.size()) {
@@ -293,10 +283,49 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Numéro CI trouvé : " + numeroCI);
         System.out.println("Nom CI trouvé : " + nomCI);
         System.out.println("Prénom CI trouvé : " + prenomCI);
+        // comparer les 3 champs avec les données en base
+        // si infos trouvé alors ok
+        // sinon : push les 3 champs + image
+        // + photo et comparaison visage
+
+        //dispatchTakeFacePictureIntent();
+
+
     }
 
+    //photo visage
+    static final int REQUEST_FACE_CAPTURE = 1;
 
-    public void runFaceDetection() {
+    public void dispatchTakeFacePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_FACE_CAPTURE);
+        }
+
+    }
+/*
+    @Override
+    protected void onFaceActivityResult(int requestFaceCode, int resultFaceCode, Intent data) {
+        super.onActivityResult(requestFaceCode, resultFaceCode, data);
+        if (requestFaceCode == REQUEST_FACE_CAPTURE && resultFaceCode == RESULT_OK) {
+
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+            //runFaceDetection(photo);
+            //runFaceDetection(photo_base);
+
+
+            //stockage photo
+            Uri photoUri = getImageUri(getApplicationContext(), photo);
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            ref.putFile(photoUri);
+
+
+        }
+    }*/
+
+
+    public void runFaceDetection(String fakeci) {
         // High-accuracy landmark detection and face classification
         FirebaseVisionFaceDetectorOptions highAccuracyOpts =
                 new FirebaseVisionFaceDetectorOptions.Builder()
@@ -310,15 +339,11 @@ public class MainActivity extends AppCompatActivity {
                 .setContourMode(FirebaseVisionFaceDetectorOptions.ALL_CONTOURS)
                 .build();
 
-        String fakeci1 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci.png?alt=media&token=796668b2-f334-4e39-a0f6-f5ee3e1140cb";
-        String fakeci2 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci2.jpg?alt=media&token=11241a73-5286-4261-9a1c-b197aff63cb0";
-        String fakeci3 = "https://firebasestorage.googleapis.com/v0/b/mspr-gosecuri.appspot.com/o/images%2Ffake_ci3.jpg?alt=media&token=af39fd24-afb3-4d67-a354-20d52b80b69a";
-
-        Bitmap bitmap = getBitmapFromURL(fakeci2);
+        Bitmap bitmap = getBitmapFromURL(fakeci);
 
         FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);
         FirebaseVisionFaceDetector detector = FirebaseVision.getInstance()
-                .getVisionFaceDetector(options);
+                .getVisionFaceDetector(highAccuracyOpts);
         Task<List<FirebaseVisionFace>> result =
                 detector.detectInImage(image)
                         .addOnSuccessListener(
@@ -327,7 +352,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onSuccess(List<FirebaseVisionFace> faces) {
                                         // Task completed successfully
                                         System.out.println("passe reco visage");
-                                        processTextRecognitionResult(faces);
+                                        processFaceDetectionResult(faces);
+                                        //return pointFace;
+                                        //matchVisagePoints(pointFace);
+
+
                                     }
                                 })
                         .addOnFailureListener(
@@ -338,33 +367,102 @@ public class MainActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
                                 });
+        System.out.println(result);
     }
 
-    private void processTextRecognitionResult(List<FirebaseVisionFace> faces) {
+    private void processFaceDetectionResult(List<FirebaseVisionFace> faces) {
+        List<FirebaseVisionPoint> listPointVisage = new ArrayList<>();
         for (FirebaseVisionFace face : faces) {
+            System.out.println("-- Image --");
             Rect bounds = face.getBoundingBox();
-            float rotY = face.getHeadEulerAngleY();  // Head is rotated to the right rotY degrees
-            float rotZ = face.getHeadEulerAngleZ();  // Head is tilted sideways rotZ degrees
+            System.out.println(bounds);
+            float rotY = face.getHeadEulerAngleY();
+            System.out.println(rotY);// Head is rotated to the right rotY degrees
+            float rotZ = face.getHeadEulerAngleZ();
+            System.out.println(rotZ);// Head is tilted sideways rotZ degrees
 
             // If landmark detection was enabled (mouth, ears, eyes, cheeks, and
             // nose available):
+            System.out.println("- Mouth -");
+            FirebaseVisionFaceLandmark mouthBottom = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_BOTTOM);
+            if (mouthBottom != null) {
+                FirebaseVisionPoint mouthBottomPos = mouthBottom.getPosition();
+                System.out.println(mouthBottomPos);
+                listPointVisage.add(mouthBottomPos);
+            }
+            FirebaseVisionFaceLandmark mouthLeft = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_LEFT);
+            if (mouthLeft != null) {
+                FirebaseVisionPoint mouthLeftPos = mouthLeft.getPosition();
+                System.out.println(mouthLeftPos);
+                listPointVisage.add(mouthLeftPos);
+            }
+            FirebaseVisionFaceLandmark mouthRight = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_RIGHT);
+            if (mouthRight != null) {
+                FirebaseVisionPoint mouthRightPos = mouthRight.getPosition();
+                System.out.println(mouthRightPos);
+                listPointVisage.add(mouthRightPos);
+            }
+            System.out.println("- Ears -");
             FirebaseVisionFaceLandmark leftEar = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EAR);
             if (leftEar != null) {
                 FirebaseVisionPoint leftEarPos = leftEar.getPosition();
+                System.out.println(leftEarPos);
+                listPointVisage.add(leftEarPos);
+            }
+            FirebaseVisionFaceLandmark rightEar = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_EAR);
+            if (rightEar != null) {
+                FirebaseVisionPoint rightEarPos = rightEar.getPosition();
+                System.out.println(rightEarPos);
+                listPointVisage.add(rightEarPos);
+            }
+            System.out.println("- Eyes -");
+            FirebaseVisionFaceLandmark leftEye = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EYE);
+            if (leftEye != null) {
+                FirebaseVisionPoint leftEyePos = leftEye.getPosition();
+                System.out.println(leftEyePos);
+                listPointVisage.add(leftEyePos);
+            }
+            FirebaseVisionFaceLandmark rightEye = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_EYE);
+            if (rightEye != null) {
+                FirebaseVisionPoint rightEyePos = rightEye.getPosition();
+                System.out.println(rightEyePos);
+                listPointVisage.add(rightEyePos);
+            }
+            System.out.println("- Cheeks -");
+            FirebaseVisionFaceLandmark cheekLeft = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_CHEEK);
+            if (cheekLeft != null) {
+                FirebaseVisionPoint cheekLeftPos = cheekLeft.getPosition();
+                System.out.println(cheekLeftPos);
+                listPointVisage.add(cheekLeftPos);
+            }
+            FirebaseVisionFaceLandmark cheekRight = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK);
+            if (cheekRight != null) {
+                FirebaseVisionPoint cheekRightPos = cheekRight.getPosition();
+                System.out.println(cheekRightPos);
+                listPointVisage.add(cheekRightPos);
+            }
+            System.out.println("- Nose -");
+            FirebaseVisionFaceLandmark noseBase = face.getLandmark(FirebaseVisionFaceLandmark.NOSE_BASE);
+            if (noseBase != null) {
+                FirebaseVisionPoint noseBasePos = noseBase.getPosition();
+                System.out.println(noseBasePos);
+                listPointVisage.add(noseBasePos);
             }
 
             // If contour detection was enabled:
             List<FirebaseVisionPoint> leftEyeContour =
                     face.getContour(FirebaseVisionFaceContour.LEFT_EYE).getPoints();
+            //System.out.println(leftEyeContour);
             List<FirebaseVisionPoint> upperLipBottomContour =
                     face.getContour(FirebaseVisionFaceContour.UPPER_LIP_BOTTOM).getPoints();
-
+            //System.out.println(upperLipBottomContour);
             // If classification was enabled:
             if (face.getSmilingProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
                 float smileProb = face.getSmilingProbability();
             }
             if (face.getRightEyeOpenProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
                 float rightEyeOpenProb = face.getRightEyeOpenProbability();
+                //System.out.println(rightEyeOpenProb);
             }
 
             // If face tracking was enabled:
@@ -372,8 +470,101 @@ public class MainActivity extends AppCompatActivity {
                 int id = face.getTrackingId();
             }
         }
+        if (pointsFace1.isEmpty()) {
+            pointsFace1 = listPointVisage;
+        } else if (!pointsFace1.isEmpty() && pointsFace2.isEmpty()) {
+            pointsFace2 = listPointVisage;
+            if (!pointsFace2.isEmpty()) {
+                boolean reco = matchVisagePoints();
+
+
+            }
+        }
+
 
     }
+
+
+    public boolean matchVisagePoints() {
+        int i = 0;
+        if (pointsFace1.equals(pointsFace2)){
+            return true;
+        }
+        else {
+            /*
+            float mouthbotomX = pointsFace1.get(0).getX();
+            float mouthbotomY = pointsFace1.get(0).getY();
+            float earleftX = pointsFace1.get(3).getX();
+            float earleftY = pointsFace1.get(3).getY();
+            float mbelXCompare = mouthbotomX - earleftX;
+            float mbelYCompare = mouthbotomY - earleftY;
+            if(mbelXCompare <= 40 && mbelXCompare >= -40 && mbelYCompare <= 40 && mbelYCompare >= -40){
+                j++;
+            }*/
+
+            float nosebase1X = pointsFace1.get(9).getX();
+            float nosebase1Y = pointsFace1.get(9).getY();
+
+            float nosebase2X = pointsFace2.get(9).getX();
+            float nosebase2Y = pointsFace2.get(9).getY();
+
+            for (FirebaseVisionPoint face1 : pointsFace1) {
+
+                float gapnose1X = nosebase1X - face1.getX();
+                float gapnose1Y = nosebase1Y - face1.getY();
+
+                for (FirebaseVisionPoint face2 : pointsFace2) {
+                    float gapnose2X = nosebase2X - face2.getX();
+                    float gapnose2Y = nosebase2Y - face2.getY();
+
+                    float gapnoseXTotal = gapnose1X - gapnose2X;
+                    float gapnoseYTotal = gapnose1Y - gapnose2Y;
+                    if(gapnoseXTotal <= 9 && gapnoseXTotal >= -9 && gapnoseYTotal <= 9 && gapnoseYTotal >= -9){
+                        i++;
+                    }
+                }
+
+            }
+            System.out.println(i);
+            if(i>=9){
+                System.out.println("Reconnaissance ok");
+                return true;
+            }
+            else{
+                System.out.println("Reconnaissance ko");
+                return false;
+            }
+
+
+
+                //face1.getX();
+                //face1.getY();
+                /*
+                for (FirebaseVisionPoint face2 : pointsFace2) {
+                    //face2.getX();
+                    //face2.getY();
+                    j++;
+                    float f1x = face1.getX();
+                    float f2x = face2.getX();
+                    float f1f2xcompare = f1x - f2x;
+                    float f1y = face1.getY();
+                    float f2y = face2.getY();
+                    float f1f2ycompare = f1y - f2y;
+                    if(f1f2xcompare <= 20 && f1f2xcompare >= -20 && f1f2ycompare <= 20 && f1f2ycompare >= -20) {
+                        //System.out.println("ok");
+                        i++;
+
+
+                    }
+
+                }
+            }*/
+
+        }
+
+    }
+
+    // fonctions utilitaire
     public static Bitmap getBitmapFromURL(String src) {
         try {
             URL url = new URL(src);
