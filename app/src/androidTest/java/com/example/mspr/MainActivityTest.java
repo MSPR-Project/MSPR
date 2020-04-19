@@ -15,7 +15,7 @@ public class MainActivityTest {
         }catch (Exception e){
             flag = false;
         }
-        assertEquals(flag, true);
+        assertEquals(flag, false);
     }
     @Test
     public void testgetBitmapFromURL() {
