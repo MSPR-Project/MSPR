@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MainActivityTest {
+    MainActivity i = new MainActivity();
     @Test
     public void testgetBitmapFromURL() {
         assertEquals(MainActivity.getBitmapFromURL("fail"), null);
