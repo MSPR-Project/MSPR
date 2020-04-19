@@ -1,4 +1,4 @@
-#Sun Apr 19 15:24:00 CEST 2020
+#Sun Apr 19 18:33:03 CEST 2020
 base.1=D\:\\MSPR\\CI\\MSPR\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\out\\classes.dex
 path.1=classes.dex
 base.0=D\:\\MSPR\\CI\\MSPR\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\out\\classes.dex
