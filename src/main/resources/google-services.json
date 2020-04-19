@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "126762001817",
+    "firebase_url": "https://mspr-gosecuri.firebaseio.com",
+    "project_id": "mspr-gosecuri",
+    "storage_bucket": "mspr-gosecuri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126762001817:android:365892134ef2ce2c759f08",
+        "android_client_info": {
+          "package_name": "com.example.mspr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126762001817-vejrn2egbvks7r0n44qcc3f5hbp7248h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADhj1njcmU-wDc8NOVNXlh1pYRlZ99dbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126762001817-vejrn2egbvks7r0n44qcc3f5hbp7248h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
