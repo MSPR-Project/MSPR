@@ -36,7 +36,7 @@
  T E S T S
 -------------------------------------------------------
 Running elPackage.testcase.Test
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.63 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.198 sec
 
 Results :
 
@@ -44,7 +44,6 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] 
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ Mspr ---
-[INFO] Building jar: D:\MSPR\CI\MSPR\target\Mspr-1.0-SNAPSHOT.jar
 [INFO] 
 [INFO] --- maven-install-plugin:2.4:install (default-install) @ Mspr ---
 [INFO] Installing D:\MSPR\CI\MSPR\target\Mspr-1.0-SNAPSHOT.jar to C:\Users\user\.m2\repository\MsprProject\Mspr\1.0-SNAPSHOT\Mspr-1.0-SNAPSHOT.jar
@@ -88,6 +87,6 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.474 s
-[INFO] Finished at: 2020-04-19T21:21:34+02:00
+[INFO] Total time:  5.238 s
+[INFO] Finished at: 2020-04-19T23:52:33+02:00
 [INFO] ------------------------------------------------------------------------
