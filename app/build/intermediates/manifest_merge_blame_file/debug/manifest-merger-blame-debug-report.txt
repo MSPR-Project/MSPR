@@ -11,21 +11,21 @@
 9-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml
 10
 11    <uses-feature
-11-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:35:5-36:35
+11-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:37:5-38:35
 12        android:name="android.hardware.camera"
-12-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:35:19-57
+12-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:37:19-57
 13        android:required="true" />
-13-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:36:9-32
+13-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:38:9-32
 14
 15    <uses-permission android:name="android.permission.CAMERA" />
-15-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:37:5-65
-15-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:37:22-62
+15-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:39:5-65
+15-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:39:22-62
 16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-16-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:38:5-81
-16-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:38:22-78
+16-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:40:5-81
+16-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:40:22-78
 17    <uses-permission android:name="android.permission.INTERNET" />
-17-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:39:5-66
-17-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:39:22-64
+17-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:41:5-66
+17-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:41:22-64
 18
 19    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 20    <!-- <uses-sdk android:minSdkVersion="14"/> -->
@@ -43,7 +43,7 @@
 24-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4b7ed484b470504a1625efd1f5138b1f\jetified-firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
 25
 26    <application
-26-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:5:5-33:19
+26-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:5:5-35:19
 27        android:allowBackup="true"
 27-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:7:9-35
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -94,7 +94,7 @@
 52        </provider>
 53
 54        <meta-data
-54-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:30:9-32:35
+54-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:30:9-33:15
 55            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
 55-->D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:31:13-70
 56            android:value="ocr" />

@@ -13,7 +13,7 @@
         errorLine2="     ~~~~~~~~~~~~">
         <location
             file="D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml"
-            line="35"
+            line="37"
             column="6"/>
     </issue>
 
