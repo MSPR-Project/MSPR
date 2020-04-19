@@ -1,17 +1,16 @@
-Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig
 > Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:mainApkListPersistenceDebug
-> Task :app:javaPreCompileDebug
 > Task :app:generateDebugResValues
 > Task :app:generateDebugResources
 
 > Task :app:processDebugGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
+> Task :app:javaPreCompileDebug
 > Task :app:createDebugCompatibleScreenManifests
 > Task :app:extractDeepLinksDebug
 
@@ -30,9 +29,8 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:generateDebugAssets
 > Task :app:mergeDebugAssets
 > Task :app:processDebugJavaRes NO-SOURCE
-> Task :app:checkDebugDuplicateClasses
 > Task :app:dexBuilderDebug
-> Task :app:mergeDebugJavaResource
+> Task :app:checkDebugDuplicateClasses
 > Task :app:mergeLibDexDebug
 > Task :app:mergeDebugJniLibFolders
 > Task :app:mergeProjectDexDebug
@@ -48,7 +46,13 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 > Task :app:processReleaseGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
-> Task :app:mergeExtDexDebug
+> Task :app:mergeDebugNativeLibs
+
+> Task :app:stripDebugDebugSymbols
+WARNING: Compatible side by side NDK version was not found. Default is 20.0.5594570.
+Compatible side by side NDK version was not found. Default is 20.0.5594570.
+Unable to strip the following libraries, packaging them as they are: libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so.
+
 > Task :app:createReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksRelease
 
@@ -58,23 +62,18 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
+> Task :app:mergeDebugJavaResource
 > Task :app:javaPreCompileRelease
 
 > Task :app:compileReleaseJavaWithJavac
 
 > Task :app:compileReleaseSources
-> Task :app:mergeDebugNativeLibs
-
-> Task :app:stripDebugDebugSymbols
-WARNING: Compatible side by side NDK version was not found. Default is 20.0.5594570.
-Compatible side by side NDK version was not found. Default is 20.0.5594570.
-Unable to strip the following libraries, packaging them as they are: libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so.
-
+> Task :app:mergeExtDexDebug
 > Task :app:packageDebug
 > Task :app:assembleDebug
 > Task :app:prepareLintJar UP-TO-DATE
-> Task :app:lintVitalRelease SKIPPED
 > Task :app:checkReleaseDuplicateClasses
+> Task :app:lintVitalRelease SKIPPED
 > Task :app:dexBuilderRelease
 > Task :app:mergeReleaseShaders
 > Task :app:compileReleaseShaders
@@ -89,7 +88,7 @@ Ran lint on variant debug: 4 issues found
 Wrote HTML report to file:///D:/MSPR/CI/MSPR/app/build/reports/lint-results.html
 Wrote XML report to file:///D:/MSPR/CI/MSPR/app/build/reports/lint-results.xml
 
-> Task :app:mergeReleaseJavaResource
+> Task :app:mergeExtDexRelease
 > Task :app:mergeReleaseNativeLibs
 
 > Task :app:stripReleaseDebugSymbols
@@ -97,9 +96,9 @@ Unable to strip the following libraries, packaging them as they are: libface_det
 
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:processDebugUnitTestJavaRes NO-SOURCE
+> Task :app:mergeReleaseJavaResource
 > Task :app:preReleaseUnitTestBuild UP-TO-DATE
 > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
-> Task :app:mergeExtDexRelease
 > Task :app:javaPreCompileDebugUnitTest
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:testDebugUnitTest NO-SOURCE
@@ -118,5 +117,5 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 49s
+BUILD SUCCESSFUL in 23s
 52 actionable tasks: 51 executed, 1 up-to-date

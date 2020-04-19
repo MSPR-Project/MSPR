@@ -7,6 +7,17 @@ import static org.junit.Assert.*;
 public class MainActivityTest {
     MainActivity i = new MainActivity();
     @Test
+    public void test_callable_function(){
+        Boolean flag=false;
+        try{
+            i.runFaceDetection();
+            flag = true;
+        }catch (Exception e){
+            flag = false;
+        }
+        assertEquals(flag, true);
+    }
+    @Test
     public void testgetBitmapFromURL() {
         assertEquals(MainActivity.getBitmapFromURL("fail"), null);
     }
