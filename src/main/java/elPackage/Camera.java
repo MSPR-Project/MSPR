@@ -5,21 +5,26 @@ import autovalue.shaded.com.squareup.javapoet$.$TypeVariableName;
 import com.google.firebase.database.*;
 import elPackage.Firebase.Common;
 import elPackage.Firebase.Item;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
+import org.opencv.core.*;
+import org.opencv.face.LBPHFaceRecognizer;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.imgcodecs.Imgcodecs;
 
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.xml.transform.Source;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.io.IOException;
 
 import static javax.imageio.ImageIO.read;
 import static elPackage.Firebase.Common.initFireBase;
@@ -28,9 +33,16 @@ public class Camera extends JFrame {
 
     static JFrame frame = new JFrame("GoSecuri");
     private DatabaseReference mDatabase;
-    private final String idUser = "1";
+    private static String idUser = "1";
     private final int counter = 0;
     private final boolean canCheck = false;
+    static JPanel panelForm = new JPanel();
+    static private int aCounter = 0;
+
+    Mat face = new Mat();
+
+    private final CascadeClassifier faceCascade;
+    CascadeClassifier eyesCascade;
 
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
     JButton startStream = new JButton("Start");
@@ -96,15 +108,27 @@ public class Camera extends JFrame {
 
     public Camera() throws IOException {
 
-        initFireBase();
+        if(aCounter == 0){
+            initFireBase();
+            aCounter++;
+        }
+        checkDatabaseImages();
+        this.faceCascade = new CascadeClassifier();
+
+        String fileFace = "/Users/fabiensisca/Documents/Cours/Mspr/src/main/resources/haarcascades/haarcascade_frontalface_alt.xml";
+        faceCascade.load(fileFace);
+
+        eyesCascade = new CascadeClassifier();
+        String fileEyes = "/Users/fabiensisca/Documents/Cours/Mspr/src/main/resources/haarcascades/haarcascade_eye_tree_eyeglasses.xml";
+        eyesCascade.load(fileEyes);
 
         webSource =new VideoCapture(0);
         webSource.open(0);
         myThread = new DaemonThread();
-        Thread t = new Thread(myThread);
-        t.setDaemon(true);
+        Thread t1 = new Thread(myThread);
+        t1.setDaemon(true);
         myThread.runnable = true;
-        t.start();
+        t1.start();
         buttonCapture.setEnabled(true);  // capture button
 
         buttonCapture.addMouseListener(new MouseAdapter() {
@@ -112,15 +136,37 @@ public class Camera extends JFrame {
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
 
-            myThread.runnable = false;
-            buttonCapture.setEnabled(false);
-            CameraPanel.setVisible(false);
-            CameraPanel.setVisible(false);
-            try {webSource.release();}
-            catch (Exception exception){System.out.println("Bug webcam");}
-            formMain();
+            if(faceDetection(pol) == true){
+
+                myThread.runnable = false;
+
+                if(Recognize() == true){
+                    buttonCapture.setEnabled(false);
+                    CameraPanel.setVisible(false);
+                    formMain();
+                }
+                else{
+                    infoBox("Visage détecté mais non identifié, veuillez recommencer", "Echec reconnaissance");
+
+                    CameraPanel.setVisible(false);
+                    try {
+                        frame.setContentPane(new Camera().MainPanelAuth);
+                    } catch (IOException ioException) {
+
+                    }
+                    CameraPanel.setVisible(true);
+                    myThread.runnable = true;
+                    buttonCapture.setEnabled(true);
+                }
 
             }
+            else{
+                infoBox("Aucun visage détecté, essayez à nouveau.", "Erreur detection");
+
+                myThread.runnable = true;
+                buttonCapture.setEnabled(true);
+            }
+        }
         });
     }
 
@@ -129,8 +175,12 @@ public class Camera extends JFrame {
         setupFrame();
     }
 
+    public static void infoBox(String infoMessage, String titleBar){
+        JOptionPane.showMessageDialog(null, infoMessage, " InfoBox : "+ titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void formMain(){
-        JPanel panelForm = new JPanel();
+
         panelForm.setVisible(true);
         frame.setContentPane(panelForm);
         panelForm.setBackground(Color.LIGHT_GRAY);
@@ -245,7 +295,7 @@ public class Camera extends JFrame {
 
     public void selectAnItem(String elItem){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Item").child(elItem);
-
+        System.out.println("Debug");
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -255,6 +305,7 @@ public class Camera extends JFrame {
                     if(item.available.equals("True")){
                         String id = item.getId();
                         updateItem(mDatabase, id, idUser, "False");
+                        System.out.println("DebugBis");
                         break;
                     }
                 }
@@ -294,6 +345,22 @@ public class Camera extends JFrame {
 
     public void ifCheckChange(){
 
+        startStream.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                panelForm.setVisible(false);
+                try {
+                    frame.setContentPane(new Camera().MainPanelAuth);
+                } catch (IOException ioException) {
+
+                }
+                CameraPanel.setVisible(true);
+                myThread.runnable = true;
+                buttonCapture.setEnabled(true);
+            }
+        });
+
         cb1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -309,10 +376,12 @@ public class Camera extends JFrame {
         cb2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb2.isSelected()){
+                    System.out.println("Testtest tes");
                     selectAnItem("gants intervention");
                 }
                 else{
+                    System.out.println("Testtest tes 2");
                     unselectAnItem("gants intervention");
                 }
             }
@@ -321,7 +390,7 @@ public class Camera extends JFrame {
         cb3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb3.isSelected()){
                     selectAnItem("ceinture secu");
                 }
                 else{
@@ -333,7 +402,7 @@ public class Camera extends JFrame {
         cb4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb4.isSelected()){
                     selectAnItem("detecteur metaux");
                 }
                 else{
@@ -345,7 +414,7 @@ public class Camera extends JFrame {
         cb5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb5.isSelected()){
                     selectAnItem("brassard secu");
                 }
                 else{
@@ -357,7 +426,7 @@ public class Camera extends JFrame {
         cb6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb6.isSelected()){
                     selectAnItem("lampe");
                 }
                 else{
@@ -369,7 +438,7 @@ public class Camera extends JFrame {
         cb7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb7.isSelected()){
                     selectAnItem("bandeau");
                 }
                 else{
@@ -381,7 +450,7 @@ public class Camera extends JFrame {
         cb8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb8.isSelected()){
                     selectAnItem("gilet");
                 }
                 else{
@@ -394,7 +463,7 @@ public class Camera extends JFrame {
         cb9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb9.isSelected()){
                     selectAnItem("chemise");
                 }
                 else{
@@ -406,7 +475,7 @@ public class Camera extends JFrame {
         cb10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb10.isSelected()){
                     selectAnItem("blouson");
                 }
                 else{
@@ -418,7 +487,7 @@ public class Camera extends JFrame {
         cb11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb11.isSelected()){
                     selectAnItem("kway");
                 }
                 else{
@@ -430,7 +499,7 @@ public class Camera extends JFrame {
         cb12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb12.isSelected()){
                     selectAnItem("talkie");
                 }
                 else{
@@ -442,7 +511,7 @@ public class Camera extends JFrame {
         cb13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb13.isSelected()){
                     selectAnItem("oreillette");
                 }
                 else{
@@ -454,7 +523,7 @@ public class Camera extends JFrame {
         cb14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cb1.isSelected()){
+                if(cb14.isSelected()){
                     selectAnItem("taser");
                 }
                 else{
@@ -608,5 +677,78 @@ public class Camera extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.pack();
         frame.setVisible(true);
+    }
+
+    public boolean faceDetection(Mat frame){
+        MatOfRect faces = new MatOfRect();
+        faceCascade.detectMultiScale(frame, faces);
+        if(faces.toArray().length > 0) {
+            Rect rectCrop = new Rect(faces.toArray()[0].tl(), faces.toArray()[0].br());
+            face = new Mat(frame, rectCrop);
+            File file = new File("/Users/fabiensisca/Documents/Cours/Mspr/images/pictureUnknow/faceCaptured.png");
+            Imgcodecs.imwrite(file.getPath(), face);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean Recognize(){
+        try {
+            File root = new File("/Users/fabiensisca/Documents/Cours/Mspr/images/pictureKnow");
+            FilenameFilter imgFilter = new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    name = name.toLowerCase();
+                    return name.endsWith(".png");
+                }
+            };
+            File[] imageFiles = root.listFiles(imgFilter);
+            List<Mat> images = new ArrayList<Mat>();
+            Mat labels = new Mat(imageFiles.length, 1, CvType.CV_32SC1);
+            int counter = 0;
+
+            for (File image : imageFiles) {
+                Mat img = Imgcodecs.imread(image.getAbsolutePath());
+                Imgproc.cvtColor(img, img, Imgproc.COLOR_BGR2GRAY);
+                Imgproc.equalizeHist(img, img);
+                int label = Integer.parseInt(image.getName().split("\\-")[0]);
+                String labnname = image.getName().split("\\_")[0];
+                String name = labnname.split("\\-")[1];
+                String lastName = image.getName().split("\\_")[1];
+                images.add(img);
+                labels.put(counter, 0, label);
+                counter++;
+            }
+            LBPHFaceRecognizer model = LBPHFaceRecognizer.create();
+            model.train(images, labels);
+            model.save("MyTrainnedData");
+
+            Mat fileUnKnow = new Mat();
+            fileUnKnow = Imgcodecs.imread("/Users/fabiensisca/Documents/Cours/Mspr/images/pictureUnknow/faceCaptured.png");
+            Imgproc.cvtColor(fileUnKnow, fileUnKnow, Imgproc.COLOR_BGR2GRAY);
+            Imgproc.equalizeHist(fileUnKnow, fileUnKnow);
+
+            model.read("MyTrainnedData");
+            int predict = model.predict_label(fileUnKnow);
+            int[] predLabel = new int[1];
+            double[] trueScale = new double[1];
+
+            model.predict(fileUnKnow,predLabel,trueScale);
+            System.out.println("Confidence : " + trueScale[0]);
+            if(trueScale[0] < 33) {
+                idUser = Integer.toString(predict);
+                //System.out.println(predict);
+                return true;
+            }
+            else
+                return false;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public void checkDatabaseImages(){
+
+
+
     }
 }
