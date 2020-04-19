@@ -56,7 +56,9 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
+    public MainActivity(){
 
+    }
     FirebaseStorage storage;
     StorageReference storageReference;
     //FirebaseVisionImage image;
