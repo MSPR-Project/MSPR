@@ -27,13 +27,13 @@
 > Task :app:mergeLibDexDebug UP-TO-DATE
 > Task :app:mergeProjectDexDebug UP-TO-DATE
 > Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
 > Task :app:mergeDebugNativeLibs UP-TO-DATE
 
 > Task :app:stripDebugDebugSymbols UP-TO-DATE
 WARNING: Compatible side by side NDK version was not found. Default is 20.0.5594570.
 Compatible side by side NDK version was not found. Default is 20.0.5594570.
 
-> Task :app:validateSigningDebug UP-TO-DATE
 > Task :app:packageDebug UP-TO-DATE
 > Task :app:assembleDebug UP-TO-DATE
 > Task :app:preReleaseBuild UP-TO-DATE
@@ -53,15 +53,15 @@ Compatible side by side NDK version was not found. Default is 20.0.5594570.
 > Task :app:compileReleaseJavaWithJavac UP-TO-DATE
 > Task :app:compileReleaseSources UP-TO-DATE
 > Task :app:prepareLintJar UP-TO-DATE
-> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
 > Task :app:lintVitalRelease SKIPPED
+> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
 > Task :app:dexBuilderRelease UP-TO-DATE
 > Task :app:mergeReleaseShaders UP-TO-DATE
 > Task :app:compileReleaseShaders UP-TO-DATE
-> Task :app:generateReleaseAssets UP-TO-DATE
-> Task :app:mergeReleaseAssets UP-TO-DATE
 > Task :app:mergeExtDexRelease UP-TO-DATE
 > Task :app:mergeDexRelease UP-TO-DATE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets UP-TO-DATE
 > Task :app:processReleaseJavaRes NO-SOURCE
 > Task :app:mergeReleaseJavaResource UP-TO-DATE
 > Task :app:mergeReleaseJniLibFolders UP-TO-DATE
@@ -95,5 +95,5 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 6s
+BUILD SUCCESSFUL in 8s
 52 actionable tasks: 1 executed, 51 up-to-date

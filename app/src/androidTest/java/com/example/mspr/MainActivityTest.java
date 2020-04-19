@@ -1,5 +1,8 @@
 package com.example.mspr;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,11 +14,14 @@ public class MainActivityTest {
         Boolean flag=false;
         try{
             i.runFaceDetection();
+            Context inContext = null;
+            Bitmap inImage = null;
+            i.getImageUri(inContext, inImage);
             flag = true;
         }catch (Exception e){
             flag = false;
         }
-        assertEquals(flag, false);
+        assertEquals(flag, true);
     }
     @Test
     public void testgetBitmapFromURL() {
