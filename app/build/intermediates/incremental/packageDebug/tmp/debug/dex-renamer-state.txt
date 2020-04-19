@@ -1,7 +1,7 @@
-#Sun Apr 19 00:23:21 CEST 2020
-base.0=D\:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+#Sun Apr 19 10:53:45 CEST 2020
+base.1=D\:\\MSPR\\CI\\MSPR\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 path.1=classes.dex
+base.0=D\:\\MSPR\\CI\\MSPR\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 renamed.1=classes2.dex
-path.0=classes.dex
 renamed.0=classes.dex
-base.1=D\:\\Bureau\\Epsi_B3\\MSPR\\MSPR_Android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+path.0=classes.dex
