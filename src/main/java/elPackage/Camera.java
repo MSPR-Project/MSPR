@@ -31,13 +31,19 @@ import static elPackage.Firebase.Common.initFireBase;
 
 public class Camera extends JFrame {
 
-    static JFrame frame = new JFrame("GoSecuri");
+    static JFrame frame = new JFrame("Go Securi");
     private DatabaseReference mDatabase;
-    private static String idUser = "1";
+    private static String idUser = "0";
     private final int counter = 0;
     private final boolean canCheck = false;
     static JPanel panelForm = new JPanel();
+    static JPanel panelPicture = new JPanel();
     static private int aCounter = 0;
+    final static boolean shouldFill = true;
+    final static boolean shouldWeightX = true;
+    final static boolean RIGHT_TO_LEFT = false;
+    private static String theName;
+
 
     Mat face = new Mat();
 
@@ -46,20 +52,25 @@ public class Camera extends JFrame {
 
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
     JButton startStream = new JButton("Start");
-    JCheckBox cb1 = new JCheckBox("Mousqueton");
-    JCheckBox cb2 = new JCheckBox("Gants d'intervention");
-    JCheckBox cb3 = new JCheckBox("Ceinture de sécurite tactique");
-    JCheckBox cb4 = new JCheckBox("Detecteur de metaux");
-    JCheckBox cb5 = new JCheckBox("Brassard de securite");
-    JCheckBox cb6 = new JCheckBox("Lampe torche");
-    JCheckBox cb7 = new JCheckBox("Bandeau Agent cynophile");
-    JCheckBox cb8 = new JCheckBox("Gilet pare-balle");
-    JCheckBox cb9 = new JCheckBox("Chemise manches courtes");
-    JCheckBox cb10 = new JCheckBox("Blouson");
-    JCheckBox cb11 = new JCheckBox("Coupe-vent");
-    JCheckBox cb12 = new JCheckBox("Talkie-Walkie");
-    JCheckBox cb13 = new JCheckBox("Kit oreillette");
-    JCheckBox cb14 = new JCheckBox("Taser");
+    static JCheckBox cb1 = new JCheckBox("Mousqueton");
+    static JCheckBox cb2 = new JCheckBox("Gants d'intervention");
+    static JCheckBox cb3 = new JCheckBox("Ceinture de sécurite tactique");
+    static JCheckBox cb4 = new JCheckBox("Detecteur de metaux");
+    static JCheckBox cb5 = new JCheckBox("Brassard de securite");
+    static JCheckBox cb6 = new JCheckBox("Lampe torche");
+    static JCheckBox cb7 = new JCheckBox("Bandeau Agent cynophile");
+    static JCheckBox cb8 = new JCheckBox("Gilet pare-balle");
+    static JCheckBox cb9 = new JCheckBox("Chemise manches courtes");
+    static JCheckBox cb10 = new JCheckBox("Blouson");
+    static JCheckBox cb11 = new JCheckBox("Coupe-vent");
+    static JCheckBox cb12 = new JCheckBox("Talkie-Walkie");
+    static JCheckBox cb13 = new JCheckBox("Kit oreillette");
+    static JCheckBox cb14 = new JCheckBox("Taser");
+    static ImageIcon img;
+    static JLabel lblImg = new JLabel();
+    static JButton comeBackButton = new JButton("Back");
+    static JLabel title = new JLabel();
+
 
 
     class DaemonThread implements Runnable{
@@ -84,11 +95,11 @@ public class Camera extends JFrame {
 
                                 if (runnable == false) {
                                     webSource.release();
-                                    System.out.println("Runnable = false so we stop the webcam");
+                                    System.out.println("Webcam turn off");
                                     this.wait();
                                 }
                         } catch (Exception ex) {
-                            System.out.println("Error");
+                            //System.out.println("Error");
                         }
                     }
                 }
@@ -114,7 +125,6 @@ public class Camera extends JFrame {
         }
         checkDatabaseImages();
         this.faceCascade = new CascadeClassifier();
-
         String fileFace = "/Users/fabiensisca/Documents/Cours/Mspr/src/main/resources/haarcascades/haarcascade_frontalface_alt.xml";
         faceCascade.load(fileFace);
 
@@ -179,26 +189,119 @@ public class Camera extends JFrame {
         JOptionPane.showMessageDialog(null, infoMessage, " InfoBox : "+ titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void formMain(){
 
+    public void buildSecondForm(){
         panelForm.setVisible(true);
         frame.setContentPane(panelForm);
-        panelForm.setBackground(Color.LIGHT_GRAY);
-        panelForm.add(startStream);
-        panelForm.add(cb1);
-        panelForm.add(cb2);
-        panelForm.add(cb3);
-        panelForm.add(cb4);
-        panelForm.add(cb5);
-        panelForm.add(cb6);
-        panelForm.add(cb7);
-        panelForm.add(cb8);
-        panelForm.add(cb9);
-        panelForm.add(cb10);
-        panelForm.add(cb11);
-        panelForm.add(cb12);
-        panelForm.add(cb13);
-        panelForm.add(cb14);
+        panelForm.setBackground(Color.WHITE);
+
+        panelForm.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        if(shouldFill){
+            c.fill = GridBagConstraints.HORIZONTAL;
+        }
+
+        if (shouldWeightX) {
+            c.weightx = 0.5;
+        }
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        //c.ipady = 40;      //make this component tall
+        c.weightx = 0.5;
+        c.gridwidth = 4;
+        c.gridx = 0;
+        c.gridy = 1;
+        comeBackButton.setBackground(Color.decode("#379EC1"));
+        comeBackButton.setForeground(Color.decode("#379EC1"));
+        panelForm.add(comeBackButton, c);
+
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 3;
+        panelForm.add(cb1, c);
+
+        c.gridx = 1;
+        c.gridy = 3;
+        panelForm.add(cb2, c);
+
+        c.gridx = 2;
+        c.gridy = 3;
+        panelForm.add(cb3, c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        panelForm.add(cb4, c);
+
+        c.gridx = 1;
+        c.gridy = 4;
+        panelForm.add(cb5, c);
+
+        c.gridx = 2;
+        c.gridy = 4;
+        panelForm.add(cb6, c);
+
+        c.gridx = 0;
+        c.gridy = 5;
+        panelForm.add(cb7, c);
+
+        c.gridx = 1;
+        c.gridy = 5;
+        panelForm.add(cb8, c);
+
+
+        c.gridx = 2;
+        c.gridy = 5;
+        panelForm.add(cb9, c);
+
+        c.gridx = 0;
+        c.gridy = 6;
+        panelForm.add(cb10, c);
+
+        c.gridx = 1;
+        c.gridy = 6;
+        panelForm.add(cb11, c);
+
+        c.gridx = 2;
+        c.gridy = 6;
+        panelForm.add(cb12, c);
+
+        c.gridx = 0;
+        c.gridy = 7;
+        panelForm.add(cb13, c);
+
+        c.gridx = 2;
+        c.gridy = 7;
+        panelForm.add(cb14, c);
+
+        c.gridx = 2;
+        c.gridy = 2;
+        //c.gridwidth = 2;
+        //c.gridheight = 6;
+        c.ipadx = 50;
+        c.ipady = 50;
+        c.anchor = GridBagConstraints.PAGE_END;
+        panelPicture.setBackground(Color.WHITE);
+
+        lblImg.setIcon(new ImageIcon("/Users/fabiensisca/Documents/Cours/Mspr/images/pictureUnknow/faceCaptured.png"));
+        //lblImg.setText("toto");
+        lblImg.setSize(50,50);
+        panelPicture.add(lblImg);
+        validate();
+        panelForm.add(panelPicture, c);
+
+        c.anchor = GridBagConstraints.PAGE_START;
+        c.gridy = 0;
+        c.gridx = 0;
+        title.setText("Gestion de l'equipement de l'utilisateur : " + theName);
+        title.setForeground(Color.decode("#379EC1"));
+        panelForm.add(title);
+
+    }
+
+
+    public void formMain(){
+        buildSecondForm();
+
         cb1.setEnabled(false);
         cb2.setEnabled(false);
         cb3.setEnabled(false);
@@ -297,7 +400,6 @@ public class Camera extends JFrame {
 
     public void selectAnItem(String elItem){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Item").child(elItem);
-        System.out.println("Debug");
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -307,7 +409,6 @@ public class Camera extends JFrame {
                     if(item.available.equals("True")){
                         String id = item.getId();
                         updateItem(mDatabase, id, idUser, "False");
-                        System.out.println("DebugBis");
                         break;
                     }
                 }
@@ -347,7 +448,7 @@ public class Camera extends JFrame {
 
     public void ifCheckChange(){
 
-        startStream.addMouseListener(new MouseAdapter() {
+        comeBackButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -357,6 +458,7 @@ public class Camera extends JFrame {
                 } catch (IOException ioException) {
 
                 }
+                idUser = "0";
                 CameraPanel.setVisible(true);
                 myThread.runnable = true;
                 buttonCapture.setEnabled(true);
@@ -674,7 +776,7 @@ public class Camera extends JFrame {
 
     public static void setupFrame() throws IOException {
 
-        frame.setSize(1000,700);
+        frame.setSize(1000,750);
         frame.setContentPane(new Camera().MainPanelAuth);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.pack();
@@ -714,7 +816,7 @@ public class Camera extends JFrame {
                 Imgproc.equalizeHist(img, img);
                 int label = Integer.parseInt(image.getName().split("\\-")[0]);
                 String labnname = image.getName().split("\\_")[0];
-                String name = labnname.split("\\-")[1];
+                theName = labnname.split("\\-")[1];
                 String lastName = image.getName().split("\\_")[1];
                 images.add(img);
                 labels.put(counter, 0, label);
@@ -735,7 +837,7 @@ public class Camera extends JFrame {
             double[] trueScale = new double[1];
 
             model.predict(fileUnKnow,predLabel,trueScale);
-            System.out.println("Confidence : " + trueScale[0]);
+            System.out.println("Degres de reconnaissance : " + trueScale[0]);
             if(trueScale[0] < 33) {
                 idUser = Integer.toString(predict);
                 //System.out.println(predict);
