@@ -1,18 +1,19 @@
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig
 > Task :app:compileDebugRenderscript NO-SOURCE
-> Task :app:javaPreCompileDebug UP-TO-DATE
-> Task :app:mainApkListPersistenceDebug UP-TO-DATE
-> Task :app:generateDebugResValues UP-TO-DATE
-> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mainApkListPersistenceDebug
+> Task :app:javaPreCompileDebug
+> Task :app:generateDebugResValues
+> Task :app:generateDebugResources
 
 > Task :app:processDebugGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
-> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
-> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
 
 > Task :app:processDebugManifest
 D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
@@ -20,43 +21,41 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 
 > Task :app:mergeDebugResources
 > Task :app:processDebugResources
-> Task :app:compileDebugJavaWithJavac UP-TO-DATE
-> Task :app:compileDebugSources UP-TO-DATE
+
+> Task :app:compileDebugJavaWithJavac
+
+> Task :app:compileDebugSources
 > Task :app:mergeDebugShaders
-> Task :app:compileDebugShaders UP-TO-DATE
-> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:compileDebugShaders
+> Task :app:generateDebugAssets
 > Task :app:mergeDebugAssets
 > Task :app:processDebugJavaRes NO-SOURCE
-> Task :app:mergeDebugJavaResource UP-TO-DATE
-> Task :app:checkDebugDuplicateClasses UP-TO-DATE
-> Task :app:mergeExtDexDebug UP-TO-DATE
-> Task :app:mergeLibDexDebug UP-TO-DATE
-> Task :app:dexBuilderDebug UP-TO-DATE
-> Task :app:mergeProjectDexDebug UP-TO-DATE
+> Task :app:dexBuilderDebug
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeLibDexDebug
 > Task :app:mergeDebugJniLibFolders
-> Task :app:mergeDebugNativeLibs UP-TO-DATE
-
-> Task :app:stripDebugDebugSymbols UP-TO-DATE
-WARNING: Compatible side by side NDK version was not found. Default is 20.0.5594570.
-Compatible side by side NDK version was not found. Default is 20.0.5594570.
-
-> Task :app:validateSigningDebug UP-TO-DATE
-> Task :app:packageDebug UP-TO-DATE
-> Task :app:assembleDebug UP-TO-DATE
+> Task :app:validateSigningDebug
 > Task :app:preReleaseBuild UP-TO-DATE
 > Task :app:compileReleaseAidl NO-SOURCE
 > Task :app:compileReleaseRenderscript NO-SOURCE
 > Task :app:generateReleaseBuildConfig
-> Task :app:javaPreCompileRelease UP-TO-DATE
-> Task :app:mainApkListPersistenceRelease UP-TO-DATE
-> Task :app:generateReleaseResValues UP-TO-DATE
-> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:mergeProjectDexDebug
+> Task :app:mainApkListPersistenceRelease
+> Task :app:generateReleaseResValues
+> Task :app:generateReleaseResources
 
 > Task :app:processReleaseGoogleServices
 Parsing json file: D:\MSPR\CI\MSPR\app\google-services.json
 
-> Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
-> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:mergeDebugNativeLibs
+
+> Task :app:stripDebugDebugSymbols
+WARNING: Compatible side by side NDK version was not found. Default is 20.0.5594570.
+Compatible side by side NDK version was not found. Default is 20.0.5594570.
+Unable to strip the following libraries, packaging them as they are: libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so.
+
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
 
 > Task :app:processReleaseManifest
 D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
@@ -64,26 +63,25 @@ D:\MSPR\CI\MSPR\app\src\main\AndroidManifest.xml:24:9-31:50 Warning:
 
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
-> Task :app:compileReleaseJavaWithJavac UP-TO-DATE
-> Task :app:compileReleaseSources UP-TO-DATE
-> Task :app:prepareLintJar UP-TO-DATE
-> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug
+> Task :app:mergeDebugJavaResource
+> Task :app:packageDebug
+> Task :app:assembleDebug
+> Task :app:javaPreCompileRelease
+
+> Task :app:compileReleaseJavaWithJavac
+
+> Task :app:compileReleaseSources
+> Task :app:prepareLintJar
+> Task :app:checkReleaseDuplicateClasses
 > Task :app:lintVitalRelease SKIPPED
-> Task :app:dexBuilderRelease UP-TO-DATE
+> Task :app:dexBuilderRelease
 > Task :app:mergeReleaseShaders
-> Task :app:mergeExtDexRelease UP-TO-DATE
-> Task :app:mergeDexRelease UP-TO-DATE
-> Task :app:compileReleaseShaders UP-TO-DATE
-> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:compileReleaseShaders
+> Task :app:generateReleaseAssets
 > Task :app:mergeReleaseAssets
 > Task :app:processReleaseJavaRes NO-SOURCE
-> Task :app:mergeReleaseJavaResource UP-TO-DATE
 > Task :app:mergeReleaseJniLibFolders
-> Task :app:mergeReleaseNativeLibs UP-TO-DATE
-> Task :app:stripReleaseDebugSymbols UP-TO-DATE
-> Task :app:packageRelease UP-TO-DATE
-> Task :app:assembleRelease UP-TO-DATE
-> Task :app:assemble UP-TO-DATE
 
 > Task :app:lint
 Ran lint on variant release: 4 issues found
@@ -93,21 +91,32 @@ Wrote XML report to file:///D:/MSPR/CI/MSPR/app/build/reports/lint-results.xml
 
 > Task :app:preDebugUnitTestBuild UP-TO-DATE
 > Task :app:processDebugUnitTestJavaRes NO-SOURCE
+> Task :app:mergeReleaseJavaResource
 > Task :app:preReleaseUnitTestBuild UP-TO-DATE
 > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
-> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:mergeReleaseNativeLibs
+
+> Task :app:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so, libface_detector_v2_jni.so.
+
+> Task :app:javaPreCompileDebugUnitTest
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:testDebugUnitTest NO-SOURCE
-> Task :app:javaPreCompileReleaseUnitTest UP-TO-DATE
+> Task :app:javaPreCompileReleaseUnitTest
 > Task :app:compileReleaseUnitTestJavaWithJavac NO-SOURCE
 > Task :app:testReleaseUnitTest NO-SOURCE
 > Task :app:test UP-TO-DATE
 > Task :app:check
+> Task :app:mergeExtDexRelease
+> Task :app:mergeDexRelease
+> Task :app:packageRelease
+> Task :app:assembleRelease
+> Task :app:assemble
 > Task :app:build
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 14s
-52 actionable tasks: 17 executed, 35 up-to-date
+BUILD SUCCESSFUL in 1m 11s
+52 actionable tasks: 52 executed

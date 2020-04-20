@@ -13,9 +13,9 @@ public class MainActivityTest {
     public void test_callable_function(){
         Boolean flag=false;
         try{
-            i.runFaceDetection();
             Context inContext = null;
             Bitmap inImage = null;
+            i.runFaceDetection(inImage);
             i.getImageUri(inContext, inImage);
             flag = true;
         }catch (Exception e){
