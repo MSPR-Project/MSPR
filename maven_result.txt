@@ -17,7 +17,7 @@
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Mspr ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory D:\MSPR\CI\MSPR\src\main\resources
+[INFO] Copying 168 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Mspr ---
 [INFO] Nothing to compile - all classes are up to date
@@ -38,7 +38,7 @@
  T E S T S
 -------------------------------------------------------
 Running elPackage.testcase.Test
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.998 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.223 sec
 
 Results :
 
@@ -54,7 +54,7 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Mspr ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory D:\MSPR\CI\MSPR\src\main\resources
+[INFO] Copying 168 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Mspr ---
 [INFO] Nothing to compile - all classes are up to date
@@ -71,7 +71,7 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Mspr ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory D:\MSPR\CI\MSPR\src\main\resources
+[INFO] Copying 168 resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Mspr ---
 [INFO] Nothing to compile - all classes are up to date
@@ -90,6 +90,6 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.216 s
-[INFO] Finished at: 2020-04-19T23:59:32+02:00
+[INFO] Total time:  7.488 s
+[INFO] Finished at: 2020-04-20T21:52:54+02:00
 [INFO] ------------------------------------------------------------------------
