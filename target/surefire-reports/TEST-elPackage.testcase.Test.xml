@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="elPackage.testcase.Test" time="0.022" errors="3" skipped="0">
+<testsuite tests="4" failures="0" name="elPackage.testcase.Test" time="0.012" errors="3" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.4+11"/>
@@ -45,7 +45,7 @@
     <property name="java.class.path" value="D:\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin\..\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install test package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher surefire-report:report"/>
     <property name="java.home" value="D:\java\JDK"/>
     <property name="user.language" value="fr"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,10 +61,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="java.vendor.version" value="AdoptOpenJDK"/>
+    <property name="sun.stdout.encoding" value="cp850"/>
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="elPackage.testcase.Test" name="test_common_initFireBase" time="0.021">
+  <testcase classname="elPackage.testcase.Test" name="test_common_initFireBase" time="0.011">
     <error message="elPackage/Firebase/Common" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: elPackage/Firebase/Common
 	at elPackage.testcase.Test.test_common_initFireBase(Test.java:36)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -106,7 +107,7 @@ Caused by: java.lang.ClassNotFoundException: elPackage.Firebase.Common
 	... 33 more
 </error>
   </testcase>
-  <testcase classname="elPackage.testcase.Test" name="test_common_te" time="0.001">
+  <testcase classname="elPackage.testcase.Test" name="test_common_te" time="0">
     <error message="elPackage/Firebase/Common" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: elPackage/Firebase/Common
 	at elPackage.testcase.Test.test_common_te(Test.java:31)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -143,7 +144,7 @@ Caused by: java.lang.ClassNotFoundException: elPackage.Firebase.Common
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </error>
   </testcase>
-  <testcase classname="elPackage.testcase.Test" name="test_item" time="0">
+  <testcase classname="elPackage.testcase.Test" name="test_item" time="0.001">
     <error message="elPackage/Firebase/Item" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: elPackage/Firebase/Item
 	at elPackage.testcase.Test.test_item(Test.java:47)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
