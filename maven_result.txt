@@ -14,8 +14,6 @@
 [INFO] --------------------------< MsprProject:Mspr >--------------------------
 [INFO] Building Mspr 1.0-SNAPSHOT
 [INFO] --------------------------------[ jar ]---------------------------------
-Downloading from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml
-Progress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml (2.5 kB at 3.5 kB/s)
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Mspr ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
@@ -40,7 +38,7 @@ Progress (1): 2.5 kB                    Downloaded from central: https://repo.
  T E S T S
 -------------------------------------------------------
 Running elPackage.testcase.Test
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.066 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.359 sec
 
 Results :
 
@@ -92,6 +90,6 @@ Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.010 s
-[INFO] Finished at: 2020-04-21T00:37:40+02:00
+[INFO] Total time:  6.036 s
+[INFO] Finished at: 2020-04-21T11:15:44+02:00
 [INFO] ------------------------------------------------------------------------
